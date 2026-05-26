@@ -476,6 +476,61 @@
   }
 
   /* -----------------------------------------------
+     Testimonials
+     ----------------------------------------------- */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial {
+    background: var(--bg-card);
+    border: 1px solid var(--hair);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.8rem 2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial p {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-weight: 380;
+    font-style: italic;
+    flex: 1;
+    margin-bottom: 1.4rem;
+  }
+
+  .testimonial footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .testimonial-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .testimonial-context {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* -----------------------------------------------
      Footer
      ----------------------------------------------- */
   footer {
@@ -577,6 +632,7 @@
   <nav class="nav">
     <a href="#work">Work</a>
     <a href="#experience">Experience</a>
+    <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </nav>
 </div>
@@ -678,8 +734,8 @@
         <p>
           In June 2014 I built Medals: a Canvas app with JSON/Markdown-authored
           challenges, baked-in gamification, and automated lesson checks. Sixty-six
-          days later it shipped at Dreamforce 2014 as Project Trailhead. Internally
-          I'm called the Godfather of Trailhead, and I'm fine with that.
+          days later it shipped at Dreamforce 2014 as Project Trailhead. Salesforce
+          calls me the Godfather of Trailhead &mdash; for inventing the prototype.
         </p>
       </div>
     </article>
@@ -701,6 +757,42 @@
         </p>
       </div>
     </article>
+
+  </div>
+</section>
+
+<!-- ============================================
+     Testimonials
+     ============================================ -->
+<section class="block" id="testimonials">
+  <div class="section-label">What Others Say</div>
+  <h2 class="section-heading">A few <em>outside voices</em>.</h2>
+
+  <div class="testimonials-grid">
+
+    <blockquote class="testimonial">
+      <p>&ldquo;Joshua Birk is someone you need to know in the #DATA and AI space&hellip; he continues to be one of the true thought leaders shaping where #DATA and AI are going. It was especially powerful seeing him deliver an incredible presentation and contribute on one of the key panels. His wisdom has influenced my journey, and beyond that, he&rsquo;s grounded, real, and a true cheerleader for the community.&rdquo;</p>
+      <footer>
+        <span class="testimonial-name">Scott Stafford</span>
+        <span class="testimonial-context">via LinkedIn &middot; Dreamin&rsquo; in Data 2026</span>
+      </footer>
+    </blockquote>
+
+    <blockquote class="testimonial">
+      <p>&ldquo;Don&rsquo;t forget Salesforce Developer Podcast hosted by Joshua Birk! Lots of great interviews.&rdquo;</p>
+      <footer>
+        <span class="testimonial-name">Guillermo G.</span>
+        <span class="testimonial-context">Reader comment, Salesforce Ben &ldquo;Top Salesforce Podcasts&rdquo;</span>
+      </footer>
+    </blockquote>
+
+    <blockquote class="testimonial">
+      <p>&ldquo;Josh Birk goes deep in a series of interviews with technical leaders in the Salesforce industry. He helps listeners gain insights into how Salesforce is built.&rdquo;</p>
+      <footer>
+        <span class="testimonial-name">Vernon Keenan</span>
+        <span class="testimonial-context">Salesforce Ben &ldquo;Top 20 Salesforce DevOps Training Resources&rdquo;</span>
+      </footer>
+    </blockquote>
 
   </div>
 </section>
