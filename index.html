@@ -852,6 +852,8 @@
     <a href="#experience">Experience</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
+    <a href="#" id="nav-game" onclick="document.getElementById('game-overlay').classList.add('active');GAME.start();return false;">[ Runner ]</a>
+    <a href="#" id="nav-vk" onclick="vkShow();return false;">[ V-K Test ]</a>
   </nav>
 </div>
 
@@ -1560,6 +1562,7 @@ const GAME = (() => {
   }
 
   function start() {
+    if (running) return;
     canvas = document.getElementById('game-canvas');
     ctx = canvas.getContext('2d');
     reset();
