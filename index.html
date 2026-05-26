@@ -852,7 +852,6 @@
     <a href="#experience">Experience</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
-    <a href="#" id="nav-game" onclick="document.getElementById('game-overlay').classList.add('active');GAME.start();return false;">[ Runner ]</a>
     <a href="#" id="nav-vk" onclick="vkShow();return false;">[ V-K Test ]</a>
   </nav>
 </div>
@@ -1276,15 +1275,6 @@
 </footer>
 
 <!-- ============================================
-     Hidden: Platform Game  (press G anywhere)
-     ============================================ -->
-<div id="game-overlay" style="display:none;position:fixed;inset:0;background:#07050a;z-index:9000;flex-direction:column;align-items:center;justify-content:center;">
-  <div style="font-family:'Roboto Mono',monospace;color:#00e5ff;text-shadow:0 0 8px #00e5ff;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;">// RUNNER_v1.0 — ESC to exit</div>
-  <canvas id="game-canvas" width="640" height="320" style="border:1px solid rgba(0,229,255,0.3);box-shadow:0 0 30px rgba(0,229,255,0.2),0 0 80px rgba(0,229,255,0.08);image-rendering:pixelated;"></canvas>
-  <div id="game-score" style="font-family:'Roboto Mono',monospace;color:#ffaa00;text-shadow:0 0 8px #ffaa00;font-size:0.75rem;letter-spacing:0.15em;margin-top:0.75rem;">SCORE: 0</div>
-</div>
-
-<!-- ============================================
      Hidden: Voight-Kampff Test  (press V anywhere)
      ============================================ -->
 <div id="vk-overlay" style="display:none;position:fixed;inset:0;background:rgba(4,3,7,0.97);z-index:9001;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
@@ -1300,8 +1290,6 @@
 </div>
 
 <style>
-  #game-overlay { display: none; }
-  #game-overlay.active { display: flex; }
   #vk-overlay { display: none; }
   #vk-overlay.active { display: flex; }
 
@@ -1420,193 +1408,17 @@ function showVKResult() {
   r.style.display = 'block';
 }
 
-/* ---- Platform Game ---- */
-const GAME = (() => {
-  const C = 32; // cell size px
-  let canvas, ctx, raf, running = false;
-  const W = 640, H = 320;
-  const GRAVITY = 0.5, JUMP = -9, SPEED = 3;
-
-  const COLORS = {
-    bg: '#07050a',
-    ground: '#0e0a14',
-    platform: '#1a1028',
-    platformEdge: '#00e5ff',
-    player: '#ff5500',
-    playerGlow: 'rgba(255,85,0,0.6)',
-    obstacle: '#ff5500',
-    obstacleGlow: 'rgba(255,85,0,0.4)',
-    star: '#ffaa00',
-    text: '#00e5ff'
-  };
-
-  let p, obstacles, stars, frameN, score, gameOver;
-
-  function reset() {
-    p = { x: 80, y: H - 56, w: 16, h: 24, vy: 0, onGround: false };
-    obstacles = [];
-    stars = Array.from({length: 40}, () => ({
-      x: Math.random() * W,
-      y: Math.random() * (H * 0.55),
-      r: Math.random() < 0.3 ? 1.5 : 1,
-      b: Math.random()
-    }));
-    frameN = 0; score = 0; gameOver = false;
-  }
-
-  function spawnObstacle() {
-    const h = 16 + Math.floor(Math.random() * 3) * 8;
-    obstacles.push({ x: W, y: H - 32 - h, w: 12, h });
-  }
-
-  function update() {
-    if (gameOver) return;
-    frameN++;
-    score++;
-
-    // stars twinkle
-    stars.forEach(s => { s.b = (s.b + 0.02) % 1; });
-
-    // player physics
-    p.vy += GRAVITY;
-    p.y += p.vy;
-    if (p.y >= H - 32 - p.h) { p.y = H - 32 - p.h; p.vy = 0; p.onGround = true; }
-    else { p.onGround = false; }
-
-    // obstacles
-    const spawnInterval = Math.max(55, 110 - Math.floor(score / 400) * 5);
-    if (frameN % spawnInterval === 0) spawnObstacle();
-    obstacles.forEach(o => o.x -= SPEED + score / 2000);
-    obstacles = obstacles.filter(o => o.x + o.w > 0);
-
-    // collision
-    obstacles.forEach(o => {
-      if (p.x + p.w - 4 > o.x && p.x + 4 < o.x + o.w && p.y + p.h > o.y && p.y < o.y + o.h) {
-        gameOver = true;
-      }
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // bg
-    ctx.fillStyle = COLORS.bg;
-    ctx.fillRect(0, 0, W, H);
-
-    // stars
-    stars.forEach(s => {
-      const a = 0.3 + Math.sin(s.b * Math.PI * 2) * 0.3;
-      ctx.fillStyle = `rgba(255,170,0,${a})`;
-      ctx.fillRect(Math.round(s.x), Math.round(s.y), s.r < 1.5 ? 1 : 2, s.r < 1.5 ? 1 : 2);
-    });
-
-    // ground
-    ctx.fillStyle = COLORS.ground;
-    ctx.fillRect(0, H - 32, W, 32);
-    ctx.fillStyle = COLORS.platformEdge;
-    ctx.fillRect(0, H - 32, W, 1);
-    ctx.shadowColor = COLORS.platformEdge;
-    ctx.shadowBlur = 6;
-    ctx.fillRect(0, H - 32, W, 1);
-    ctx.shadowBlur = 0;
-
-    // obstacles
-    obstacles.forEach(o => {
-      ctx.fillStyle = COLORS.obstacle;
-      ctx.shadowColor = COLORS.obstacleGlow;
-      ctx.shadowBlur = 8;
-      ctx.fillRect(o.x, o.y, o.w, o.h);
-      ctx.shadowBlur = 0;
-    });
-
-    // player
-    ctx.fillStyle = COLORS.player;
-    ctx.shadowColor = COLORS.playerGlow;
-    ctx.shadowBlur = 12;
-    ctx.fillRect(p.x, p.y, p.w, p.h);
-    // eyes
-    ctx.fillStyle = '#ffaa00';
-    ctx.shadowColor = 'rgba(255,170,0,0.9)';
-    ctx.shadowBlur = 6;
-    ctx.fillRect(p.x + p.w - 5, p.y + 4, 3, 3);
-    ctx.shadowBlur = 0;
-
-    // score
-    document.getElementById('game-score').textContent = `SCORE: ${score}`;
-
-    if (gameOver) {
-      ctx.fillStyle = 'rgba(7,5,10,0.75)';
-      ctx.fillRect(0, 0, W, H);
-      ctx.fillStyle = '#ff5500';
-      ctx.shadowColor = '#ff5500';
-      ctx.shadowBlur = 16;
-      ctx.font = 'bold 14px "Roboto Mono", monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('// TERMINATED', W/2, H/2 - 14);
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = '#00e5ff';
-      ctx.shadowColor = '#00e5ff';
-      ctx.shadowBlur = 8;
-      ctx.font = '11px "Roboto Mono", monospace';
-      ctx.fillText(`FINAL SCORE: ${score}  —  SPACE to restart`, W/2, H/2 + 10);
-      ctx.shadowBlur = 0;
-      ctx.textAlign = 'left';
-    }
-  }
-
-  function loop() {
-    update();
-    draw();
-    if (running) raf = requestAnimationFrame(loop);
-  }
-
-  function start() {
-    if (running) return;
-    canvas = document.getElementById('game-canvas');
-    ctx = canvas.getContext('2d');
-    reset();
-    running = true;
-    loop();
-  }
-
-  function stop() {
-    running = false;
-    cancelAnimationFrame(raf);
-  }
-
-  function jump() {
-    if (p.onGround) { p.vy = JUMP; p.onGround = false; }
-  }
-
-  return { start, stop, jump, reset, isOver: () => gameOver };
-})();
-
 /* ---- Key handler ---- */
 document.addEventListener('keydown', e => {
-  // G = game
-  if (e.key === 'g' || e.key === 'G') {
-    if (!document.getElementById('game-overlay').classList.contains('active')) {
-      document.getElementById('game-overlay').classList.add('active');
-      GAME.start();
-    }
-  }
   // V = Voight-Kampff
   if (e.key === 'v' || e.key === 'V') {
     if (!document.getElementById('vk-overlay').classList.contains('active')) {
       vkShow();
     }
   }
-  // Space / Up = jump
-  if ((e.key === ' ' || e.key === 'ArrowUp') && document.getElementById('game-overlay').classList.contains('active')) {
-    e.preventDefault();
-    if (GAME.isOver()) { GAME.reset(); } else { GAME.jump(); }
-  }
-  // ESC = close overlays
+  // ESC = close overlay
   if (e.key === 'Escape') {
-    document.getElementById('game-overlay').classList.remove('active');
     document.getElementById('vk-overlay').classList.remove('active');
-    GAME.stop();
   }
 });
 </script>
