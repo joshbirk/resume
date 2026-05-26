@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-label="Studio microphone illustration">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#3a2a1c"/>
+      <stop offset="55%" stop-color="#1f1610"/>
+      <stop offset="100%" stop-color="#0e0a06"/>
+    </radialGradient>
+    <linearGradient id="micBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3128"/>
+      <stop offset="50%" stop-color="#1a1612"/>
+      <stop offset="100%" stop-color="#0e0a06"/>
+    </linearGradient>
+    <linearGradient id="grille" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a4a3c"/>
+      <stop offset="50%" stop-color="#2e2418"/>
+      <stop offset="100%" stop-color="#1a1208"/>
+    </linearGradient>
+    <radialGradient id="rim" cx="50%" cy="50%" r="50%">
+      <stop offset="80%" stop-color="#c66b3d" stop-opacity="0"/>
+      <stop offset="95%" stop-color="#c66b3d" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c66b3d" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="mesh" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="7" cy="7" r="2.4" fill="#0a0604"/>
+      <circle cx="0" cy="0" r="2.4" fill="#0a0604"/>
+      <circle cx="14" cy="0" r="2.4" fill="#0a0604"/>
+      <circle cx="0" cy="14" r="2.4" fill="#0a0604"/>
+      <circle cx="14" cy="14" r="2.4" fill="#0a0604"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect width="1600" height="900" fill="url(#bgGlow)"/>
+
+  <!-- soft warm glow behind mic -->
+  <ellipse cx="800" cy="430" rx="380" ry="380" fill="url(#rim)"/>
+
+  <!-- shock mount (suspension cradle) -->
+  <g stroke="#5a4a3c" stroke-width="6" fill="none" opacity="0.92">
+    <!-- outer ring -->
+    <ellipse cx="800" cy="430" rx="280" ry="280"/>
+    <!-- inner ring -->
+    <ellipse cx="800" cy="430" rx="265" ry="265" stroke-width="2" opacity="0.6"/>
+    <!-- elastic suspension lines connecting outer ring to mic -->
+    <line x1="540" y1="290" x2="660" y2="350" stroke-width="2"/>
+    <line x1="540" y1="570" x2="660" y2="510" stroke-width="2"/>
+    <line x1="1060" y1="290" x2="940" y2="350" stroke-width="2"/>
+    <line x1="1060" y1="570" x2="940" y2="510" stroke-width="2"/>
+    <line x1="800" y1="160" x2="800" y2="280" stroke-width="2"/>
+    <line x1="800" y1="700" x2="800" y2="580" stroke-width="2"/>
+  </g>
+
+  <!-- mic stand arm extending down -->
+  <rect x="790" y="700" width="20" height="200" fill="#3a3128"/>
+  <rect x="780" y="880" width="40" height="20" fill="#1a1612"/>
+
+  <!-- main mic body (cylindrical) -->
+  <g>
+    <!-- shadow under mic -->
+    <ellipse cx="800" cy="650" rx="120" ry="14" fill="#000" opacity="0.5"/>
+
+    <!-- bottom cap of mic -->
+    <rect x="730" y="600" width="140" height="50" rx="6" fill="url(#micBody)"/>
+    <!-- main body cylinder -->
+    <rect x="720" y="380" width="160" height="225" rx="10" fill="url(#micBody)"/>
+    <!-- subtle highlight on left -->
+    <rect x="725" y="385" width="6" height="215" rx="3" fill="#5a4a3c" opacity="0.4"/>
+
+    <!-- grille / capsule (the round head) -->
+    <circle cx="800" cy="370" r="105" fill="url(#grille)"/>
+    <!-- grille mesh overlay -->
+    <circle cx="800" cy="370" r="105" fill="url(#mesh)" opacity="0.85"/>
+    <!-- grille rim -->
+    <circle cx="800" cy="370" r="105" fill="none" stroke="#3a3128" stroke-width="6"/>
+    <circle cx="800" cy="370" r="105" fill="none" stroke="#5a4a3c" stroke-width="1.5"/>
+    <!-- grille highlight -->
+    <ellipse cx="765" cy="335" rx="25" ry="18" fill="#7a6850" opacity="0.35"/>
+
+    <!-- the band where grille meets body -->
+    <rect x="720" y="465" width="160" height="14" fill="#0a0604"/>
+    <rect x="720" y="463" width="160" height="2" fill="#5a4a3c" opacity="0.5"/>
+
+    <!-- small terracotta power indicator -->
+    <circle cx="800" cy="540" r="4" fill="#c66b3d"/>
+    <circle cx="800" cy="540" r="8" fill="#c66b3d" opacity="0.25"/>
+
+    <!-- model label area (subtle) -->
+    <rect x="765" y="560" width="70" height="10" rx="1" fill="#0a0604" opacity="0.6"/>
+  </g>
+
+  <!-- atmospheric particles / dust motes in light -->
+  <g fill="#c66b3d" opacity="0.35">
+    <circle cx="440" cy="220" r="1.5"/>
+    <circle cx="380" cy="380" r="1"/>
+    <circle cx="500" cy="180" r="1.2"/>
+    <circle cx="1180" cy="250" r="1"/>
+    <circle cx="1220" cy="450" r="1.4"/>
+    <circle cx="1100" cy="640" r="1"/>
+    <circle cx="350" cy="600" r="1.2"/>
+    <circle cx="420" cy="700" r="1"/>
+    <circle cx="1240" cy="700" r="1.3"/>
+    <circle cx="1300" cy="350" r="0.8"/>
+  </g>
+
+  <!-- subtle vignette -->
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.5"/>
+  </radialGradient>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

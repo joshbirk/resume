@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-label="Speaker on a stage under a spotlight">
+  <defs>
+    <linearGradient id="stageBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e0a06"/>
+      <stop offset="60%" stop-color="#1a1208"/>
+      <stop offset="100%" stop-color="#2a1810"/>
+    </linearGradient>
+    <radialGradient id="spotCone" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#f5e3c2" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#e8b890" stop-opacity="0.4"/>
+      <stop offset="55%" stop-color="#c66b3d" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#a14a26" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floorPool" cx="50%" cy="50%" rx="50%" ry="20%">
+      <stop offset="0%" stop-color="#f5e3c2" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#c66b3d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a14a26" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="100%" stop-color="#3a2818"/>
+    </linearGradient>
+    <radialGradient id="audienceGrad" cx="50%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="100%" stop-color="#0a0604"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1600" height="900" fill="url(#stageBg)"/>
+
+  <!-- back curtain / wall (very dark) -->
+  <rect width="1600" height="600" fill="#0a0604" opacity="0.7"/>
+
+  <!-- subtle haze atmosphere across the back -->
+  <g opacity="0.25">
+    <rect y="100" width="1600" height="400" fill="#a14a26" opacity="0.15"/>
+  </g>
+
+  <!-- light beam 1 (main spotlight cone from above) -->
+  <polygon points="800,0 720,0 580,750 1020,750 880,0" fill="url(#spotCone)" opacity="0.9"/>
+
+  <!-- secondary side lights for atmosphere -->
+  <polygon points="200,0 140,0 380,650 480,650" fill="url(#spotCone)" opacity="0.18"/>
+  <polygon points="1400,0 1460,0 1220,650 1120,650" fill="url(#spotCone)" opacity="0.18"/>
+
+  <!-- floor of stage with light pool -->
+  <rect y="640" width="1600" height="260" fill="url(#floorGrad)"/>
+  <!-- floor reflection line -->
+  <rect y="640" width="1600" height="2" fill="#a14a26" opacity="0.3"/>
+
+  <!-- main light pool on floor -->
+  <ellipse cx="800" cy="730" rx="280" ry="55" fill="url(#floorPool)"/>
+
+  <!-- floorboards subtle lines -->
+  <g stroke="#5a3820" stroke-width="0.5" opacity="0.25">
+    <line x1="0" y1="700" x2="1600" y2="700"/>
+    <line x1="0" y1="780" x2="1600" y2="780"/>
+    <line x1="0" y1="850" x2="1600" y2="850"/>
+  </g>
+
+  <!-- speaker silhouette in center, slightly off-axis for human feel -->
+  <g fill="#0a0604">
+    <!-- shadow under speaker -->
+    <ellipse cx="800" cy="735" rx="55" ry="6" fill="#000" opacity="0.6"/>
+
+    <!-- legs (slightly apart, natural stance) -->
+    <path d="M 778,580 L 775,735 L 793,735 L 798,580 Z"/>
+    <path d="M 802,580 L 807,735 L 825,735 L 822,580 Z"/>
+
+    <!-- torso -->
+    <path d="M 760,460 Q 762,440 770,425 L 830,425 Q 838,440 840,460 L 845,590 L 755,590 Z"/>
+
+    <!-- left arm slightly extended (gesture) -->
+    <path d="M 758,470 Q 728,485 712,545 Q 706,575 720,580 Q 732,575 734,555 Q 745,520 762,500 Z"/>
+
+    <!-- right arm at side -->
+    <path d="M 842,468 Q 858,485 860,530 Q 862,575 850,580 Q 838,580 834,565 L 836,485 Z"/>
+
+    <!-- neck -->
+    <rect x="790" y="408" width="20" height="22"/>
+
+    <!-- head -->
+    <ellipse cx="800" cy="395" rx="26" ry="32"/>
+  </g>
+
+  <!-- speaker highlight (rim light from spotlight) -->
+  <g opacity="0.35" fill="#f5e3c2">
+    <path d="M 770,425 L 766,460 L 762,500 L 758,470 Q 763,448 770,425 Z"/>
+    <ellipse cx="785" cy="385" rx="6" ry="14"/>
+    <path d="M 778,580 L 775,650 L 778,650 L 781,580 Z"/>
+  </g>
+
+  <!-- microphone stand in front of speaker -->
+  <g>
+    <rect x="797" y="500" width="6" height="180" fill="#1a1208"/>
+    <!-- mic head at top of stand -->
+    <ellipse cx="800" cy="495" rx="12" ry="18" fill="#0a0604"/>
+    <ellipse cx="800" cy="495" rx="10" ry="16" fill="#2a1810"/>
+    <!-- base of stand -->
+    <ellipse cx="800" cy="685" rx="22" ry="4" fill="#1a1208"/>
+  </g>
+
+  <!-- audience silhouettes (very dark, suggested heads in foreground) -->
+  <g fill="url(#audienceGrad)">
+    <!-- row of heads at the bottom edge -->
+    <ellipse cx="60" cy="880" rx="38" ry="32"/>
+    <ellipse cx="155" cy="890" rx="42" ry="36"/>
+    <ellipse cx="260" cy="875" rx="40" ry="34"/>
+    <ellipse cx="355" cy="885" rx="38" ry="32"/>
+    <ellipse cx="450" cy="878" rx="42" ry="36"/>
+    <ellipse cx="545" cy="888" rx="38" ry="32"/>
+    <ellipse cx="640" cy="882" rx="40" ry="34"/>
+    <ellipse cx="735" cy="888" rx="38" ry="32"/>
+    <ellipse cx="830" cy="880" rx="40" ry="34"/>
+    <ellipse cx="925" cy="888" rx="42" ry="36"/>
+    <ellipse cx="1020" cy="878" rx="38" ry="32"/>
+    <ellipse cx="1115" cy="885" rx="40" ry="34"/>
+    <ellipse cx="1210" cy="880" rx="42" ry="36"/>
+    <ellipse cx="1305" cy="888" rx="38" ry="32"/>
+    <ellipse cx="1400" cy="878" rx="40" ry="34"/>
+    <ellipse cx="1500" cy="888" rx="42" ry="36"/>
+    <ellipse cx="1580" cy="880" rx="38" ry="32"/>
+  </g>
+
+  <!-- dust motes in the spotlight beam -->
+  <g fill="#f5e3c2" opacity="0.5">
+    <circle cx="780" cy="150" r="1.5"/>
+    <circle cx="820" cy="220" r="1"/>
+    <circle cx="760" cy="280" r="1.3"/>
+    <circle cx="830" cy="340" r="1"/>
+    <circle cx="790" cy="420" r="0.8"/>
+    <circle cx="740" cy="500" r="1.2"/>
+    <circle cx="850" cy="560" r="1"/>
+    <circle cx="720" cy="620" r="1.5"/>
+    <circle cx="870" cy="650" r="1"/>
+    <circle cx="690" cy="680" r="1.2"/>
+  </g>
+
+  <!-- stage lights at top edge (hanging fixtures, subtle) -->
+  <g fill="#3a2818">
+    <rect x="750" y="0" width="100" height="12"/>
+    <circle cx="780" cy="15" r="5" fill="#f5e3c2" opacity="0.6"/>
+    <circle cx="800" cy="15" r="5" fill="#f5e3c2" opacity="0.7"/>
+    <circle cx="820" cy="15" r="5" fill="#f5e3c2" opacity="0.6"/>
+  </g>
+</svg>
