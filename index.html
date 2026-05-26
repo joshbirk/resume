@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   /* -----------------------------------------------
      Tokens — 8-bit Blade Runner
@@ -39,9 +39,9 @@
     --glow-cyan:   0 0 4px #00e5ff, 0 0 14px rgba(0,229,255,0.8), 0 0 38px rgba(0,229,255,0.25);
     --glow-text:   0 0 8px rgba(240, 222, 184, 0.6);
 
-    --serif: 'Fraunces', 'Hoefler Text', Georgia, serif;
-    --sans:  'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    --serif: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --sans:  'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:  'Roboto Mono', 'SF Mono', Menlo, monospace;
 
     --maxw: 1180px;
     --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -153,20 +153,18 @@
 
   .hero h1 {
     font-family: var(--serif);
-    font-weight: 380;
+    font-weight: 300;
     font-size: clamp(3.4rem, 9.5vw, 7.5rem);
     line-height: 0.92;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
     color: var(--ink);
-    font-variation-settings: "opsz" 144, "SOFT" 30;
   }
   .hero h1 .first { display: block; }
   .hero h1 .last {
     display: block;
     font-style: italic;
     color: var(--accent);
-    font-weight: 360;
-    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-weight: 300;
     text-shadow: var(--glow-accent);
   }
 
@@ -188,7 +186,7 @@
     font-size: clamp(1.15rem, 1.7vw, 1.4rem);
     line-height: 1.4;
     color: var(--ink-soft);
-    font-weight: 380;
+    font-weight: 300;
   }
   .hero-aside .lede {
     font-style: italic;
@@ -312,20 +310,20 @@
 
   .section-heading {
     font-family: var(--serif);
-    font-weight: 380;
+    font-weight: 300;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     line-height: 1.05;
     letter-spacing: -0.022em;
     margin-bottom: 3rem;
     max-width: 22ch;
-    font-variation-settings: "opsz" 96, "SOFT" 20;
+
   }
   .section-heading em {
     font-style: italic;
     color: var(--accent);
     text-shadow: var(--glow-accent);
-    font-weight: 360;
-    font-variation-settings: "opsz" 96, "SOFT" 60;
+    font-weight: 300;
+
   }
 
   .block { margin-bottom: 6.5rem; }
@@ -346,13 +344,13 @@
     font-size: clamp(1.15rem, 1.7vw, 1.4rem);
     line-height: 1.5;
     color: var(--ink-soft);
-    font-weight: 380;
+    font-weight: 300;
   }
   .about p + p { margin-top: 1.2rem; }
   .about em.hl {
     font-style: italic;
     color: var(--accent);
-    font-variation-settings: "opsz" 96, "SOFT" 70;
+
   }
 
   /* -----------------------------------------------
@@ -442,13 +440,13 @@
   }
   .card h3 {
     font-family: var(--serif);
-    font-weight: 420;
+    font-weight: 500;
     font-size: 1.55rem;
     line-height: 1.15;
     letter-spacing: -0.012em;
     margin-bottom: 0.9rem;
     color: var(--ink);
-    font-variation-settings: "opsz" 36, "SOFT" 30;
+
   }
   .card p {
     font-size: 0.97rem;
@@ -593,12 +591,12 @@
   }
   .job h3 {
     font-family: var(--serif);
-    font-weight: 460;
+    font-weight: 500;
     font-size: 1.4rem;
     letter-spacing: -0.01em;
     line-height: 1.2;
     margin-bottom: 0.25rem;
-    font-variation-settings: "opsz" 36, "SOFT" 20;
+
   }
   .job .where {
     font-family: var(--mono);
@@ -713,7 +711,7 @@
     font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.55;
     color: var(--ink-soft);
-    font-weight: 380;
+    font-weight: 300;
     font-style: italic;
     flex: 1;
     margin-bottom: 1.4rem;
@@ -771,14 +769,14 @@
   }
   footer h3 {
     font-family: var(--serif);
-    font-weight: 360;
+    font-weight: 300;
     font-style: italic;
     font-size: clamp(2rem, 4.5vw, 3rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--bg-card);
     margin-bottom: 1.2rem;
-    font-variation-settings: "opsz" 96, "SOFT" 70;
+
   }
   footer .contact {
     font-family: var(--mono);
@@ -1268,7 +1266,7 @@
     </div>
 
     <div class="colophon">
-      <span>&copy; 2026 Joshua Birk &middot; Set in Fraunces &amp; Manrope</span>
+      <span>&copy; 2026 Joshua Birk &middot; Set in Roboto &amp; Roboto Mono</span>
       <span>Chicago, IL</span>
     </div>
   </div>
@@ -1278,16 +1276,16 @@
      Hidden: Platform Game  (press G anywhere)
      ============================================ -->
 <div id="game-overlay" style="display:none;position:fixed;inset:0;background:#07050a;z-index:9000;flex-direction:column;align-items:center;justify-content:center;">
-  <div style="font-family:'JetBrains Mono',monospace;color:#00e5ff;text-shadow:0 0 8px #00e5ff;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;">// RUNNER_v1.0 — ESC to exit</div>
+  <div style="font-family:'Roboto Mono',monospace;color:#00e5ff;text-shadow:0 0 8px #00e5ff;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;">// RUNNER_v1.0 — ESC to exit</div>
   <canvas id="game-canvas" width="640" height="320" style="border:1px solid rgba(0,229,255,0.3);box-shadow:0 0 30px rgba(0,229,255,0.2),0 0 80px rgba(0,229,255,0.08);image-rendering:pixelated;"></canvas>
-  <div id="game-score" style="font-family:'JetBrains Mono',monospace;color:#ffaa00;text-shadow:0 0 8px #ffaa00;font-size:0.75rem;letter-spacing:0.15em;margin-top:0.75rem;">SCORE: 0</div>
+  <div id="game-score" style="font-family:'Roboto Mono',monospace;color:#ffaa00;text-shadow:0 0 8px #ffaa00;font-size:0.75rem;letter-spacing:0.15em;margin-top:0.75rem;">SCORE: 0</div>
 </div>
 
 <!-- ============================================
      Hidden: Voight-Kampff Test  (press V anywhere)
      ============================================ -->
 <div id="vk-overlay" style="display:none;position:fixed;inset:0;background:rgba(4,3,7,0.97);z-index:9001;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
-  <div id="vk-box" style="max-width:560px;width:90%;font-family:'JetBrains Mono',monospace;border:1px solid rgba(255,85,0,0.4);box-shadow:0 0 40px rgba(255,85,0,0.15);padding:2.5rem;">
+  <div id="vk-box" style="max-width:560px;width:90%;font-family:'Roboto Mono',monospace;border:1px solid rgba(255,85,0,0.4);box-shadow:0 0 40px rgba(255,85,0,0.15);padding:2.5rem;">
     <div style="color:#ff5500;text-shadow:0 0 8px #ff5500;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,85,0,0.2);padding-bottom:0.75rem;">
       VOIGHT-KAMPFF EMPATHY ASSESSMENT &mdash; NEXUS DETECTION UNIT
     </div>
@@ -1308,7 +1306,7 @@
     background: transparent;
     border: 1px solid rgba(255,85,0,0.35);
     color: #c8a870;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 0.82rem;
     padding: 0.6rem 1rem;
     cursor: pointer;
@@ -1540,14 +1538,14 @@ const GAME = (() => {
       ctx.fillStyle = '#ff5500';
       ctx.shadowColor = '#ff5500';
       ctx.shadowBlur = 16;
-      ctx.font = 'bold 14px "JetBrains Mono", monospace';
+      ctx.font = 'bold 14px "Roboto Mono", monospace';
       ctx.textAlign = 'center';
       ctx.fillText('// TERMINATED', W/2, H/2 - 14);
       ctx.shadowBlur = 0;
       ctx.fillStyle = '#00e5ff';
       ctx.shadowColor = '#00e5ff';
       ctx.shadowBlur = 8;
-      ctx.font = '11px "JetBrains Mono", monospace';
+      ctx.font = '11px "Roboto Mono", monospace';
       ctx.fillText(`FINAL SCORE: ${score}  —  SPACE to restart`, W/2, H/2 + 10);
       ctx.shadowBlur = 0;
       ctx.textAlign = 'left';
