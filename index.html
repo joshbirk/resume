@@ -20,15 +20,18 @@
      Tokens
      ----------------------------------------------- */
   :root {
-    --bg:        #f3ede2;
-    --bg-card:   #faf6ec;
-    --bg-deep:   #ebe2d2;
-    --ink:       #1a1612;
-    --ink-soft:  #3a3128;
-    --muted:     #756553;
+    --bg:        #f0e8d6;
+    --bg-card:   #f7f0e2;
+    --bg-deep:   #e6dbc6;
+    --ink:       #1a1410;
+    --ink-soft:  #3a2e22;
+    --muted:     #7a6550;
     --accent:    #a14a26;
     --accent-2:  #c66b3d;
-    --hair:      #d4c4ad;
+    --amber:     #b87820;
+    --amber-2:   #d49830;
+    --hair:      #c8b898;
+    --grid-line: rgba(161, 74, 38, 0.07);
 
     --serif: 'Fraunces', 'Hoefler Text', Georgia, serif;
     --sans:  'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -44,6 +47,8 @@
 
   body {
     background: var(--bg);
+    background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
     color: var(--ink);
     font-family: var(--sans);
     font-size: 16.5px;
@@ -54,15 +59,19 @@
     overflow-x: hidden;
   }
 
-  /* Subtle grain overlay for warmth */
+  /* Scanline overlay */
   body::before {
     content: "";
     position: fixed; inset: 0;
     pointer-events: none;
     z-index: 1000;
-    opacity: 0.045;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(26, 20, 10, 0.016) 3px,
+      rgba(26, 20, 10, 0.016) 4px
+    );
   }
 
   a { color: var(--accent); text-decoration: none; }
@@ -76,7 +85,7 @@
   .topbar {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 1.6rem var(--gutter) 0;
+    padding: 1.4rem var(--gutter);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -85,17 +94,19 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--muted);
+    border-bottom: 1px dashed var(--hair);
   }
   .topbar .mark {
-    color: var(--ink);
+    color: var(--amber);
     font-weight: 500;
+    letter-spacing: 0.1em;
   }
   .topbar .nav a {
     color: var(--muted);
     margin-left: 1.5rem;
     transition: color 0.2s;
   }
-  .topbar .nav a:hover { color: var(--accent); }
+  .topbar .nav a:hover { color: var(--amber); }
 
   @media (max-width: 640px) {
     .topbar .nav { display: none; }
@@ -143,7 +154,7 @@
     color: var(--muted);
     margin-top: 1.6rem;
     padding-top: 1.1rem;
-    border-top: 1px solid var(--hair);
+    border-top: 1px dashed var(--hair);
     max-width: 30ch;
   }
 
@@ -167,8 +178,39 @@
     color: var(--muted);
     line-height: 1.9;
   }
-  .hero-aside .meta a { color: var(--ink-soft); border-bottom: 1px solid var(--hair); padding-bottom: 1px; }
+  .hero-aside .meta a { color: var(--ink-soft); border-bottom: 1px dashed var(--hair); padding-bottom: 1px; }
   .hero-aside .meta a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Avatar */
+  .avatar-frame {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border: 2px solid var(--accent);
+    outline: 1px solid var(--amber);
+    outline-offset: 4px;
+    margin-bottom: 1.8rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .avatar-frame::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(26, 20, 10, 0.04) 3px,
+      rgba(26, 20, 10, 0.04) 4px
+    );
+    pointer-events: none;
+  }
+  .avatar-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(0.2) contrast(1.05);
+    display: block;
+  }
 
   /* -----------------------------------------------
      Skyline band
@@ -220,17 +262,23 @@
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--amber);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
+  .section-label::before {
+    content: ">>";
+    color: var(--accent);
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
   .section-label::after {
     content: "";
     flex: 1;
     height: 1px;
-    background: var(--hair);
+    background: linear-gradient(90deg, var(--hair) 0%, transparent 100%);
   }
 
   .section-heading {
@@ -292,15 +340,26 @@
   .card {
     background: var(--bg-card);
     border: 1px solid var(--hair);
-    border-radius: 4px;
+    border-radius: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+    position: relative;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 14px; height: 14px;
+    border-top: 2px solid var(--amber);
+    border-left: 2px solid var(--amber);
+    pointer-events: none;
+    z-index: 2;
   }
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 40px -28px rgba(50, 30, 10, 0.25);
+    box-shadow: 0 24px 40px -28px rgba(184, 120, 32, 0.3);
   }
 
   .card-media {
@@ -322,13 +381,14 @@
     position: absolute;
     top: 1rem; right: 1rem;
     background: rgba(0,0,0,0.6);
-    color: rgba(255,255,255,0.92);
+    color: var(--amber-2);
     font-family: var(--mono);
     font-size: 0.7rem;
     padding: 0.3rem 0.6rem;
     letter-spacing: 0.08em;
-    border-radius: 2px;
+    border-radius: 0;
     backdrop-filter: blur(4px);
+    border: 1px solid rgba(184, 120, 32, 0.4);
   }
 
   .card-body {
@@ -342,7 +402,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--amber);
     margin-bottom: 0.7rem;
   }
   .card h3 {
@@ -392,8 +452,10 @@
     font-family: var(--mono);
     font-size: 0.78rem;
     letter-spacing: 0.06em;
-    color: var(--muted);
+    color: var(--amber);
     padding-top: 0.4rem;
+    padding-right: 1rem;
+    border-right: 1px dashed var(--hair);
   }
   .job h3 {
     font-family: var(--serif);
@@ -417,15 +479,17 @@
   }
   .job .role-row:first-child { margin-top: 0; }
   .job .role-title {
+    font-family: var(--mono);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--ink);
+    letter-spacing: 0.02em;
   }
   .job .role-title .yrs {
     font-family: var(--mono);
     font-weight: 400;
     font-size: 0.78rem;
-    color: var(--muted);
+    color: var(--amber);
     letter-spacing: 0.04em;
     margin-left: 0.6rem;
   }
@@ -449,10 +513,10 @@
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--amber);
     margin-bottom: 1rem;
     padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--hair);
+    border-bottom: 1px dashed var(--hair);
   }
   .skill-list {
     display: flex;
@@ -462,17 +526,19 @@
   .pill {
     display: inline-block;
     padding: 0.32rem 0.75rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
     background: var(--bg-card);
     border: 1px solid var(--hair);
-    border-radius: 100px;
+    border-radius: 0;
     color: var(--ink-soft);
     transition: all 0.2s;
   }
   .pill:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--bg);
+    border-color: var(--amber);
+    color: var(--amber);
+    background: var(--bg-deep);
   }
 
   /* -----------------------------------------------
@@ -487,44 +553,54 @@
   .testimonial {
     background: var(--bg-card);
     border: 1px solid var(--hair);
-    border-left: 3px solid var(--accent);
-    border-radius: 4px;
-    padding: 1.8rem 2rem 1.6rem;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
   }
-
+  .testimonial::before {
+    content: "// TRANSMISSION";
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    background: var(--bg-deep);
+    border-bottom: 1px dashed var(--hair);
+    padding: 0.5rem 1.5rem;
+  }
   .testimonial p {
     font-family: var(--serif);
-    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.55;
     color: var(--ink-soft);
     font-weight: 380;
     font-style: italic;
     flex: 1;
     margin-bottom: 1.4rem;
+    padding: 1.5rem 1.5rem 0;
   }
-
   .testimonial footer {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     background: none;
-    padding: 0;
+    color: inherit;
+    padding: 0 1.5rem 1.5rem;
     margin: 0;
   }
-
   .testimonial-name {
-    font-family: var(--sans);
+    font-family: var(--mono);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--ink);
+    letter-spacing: 0.04em;
   }
-
   .testimonial-context {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
@@ -535,6 +611,8 @@
      ----------------------------------------------- */
   footer {
     background: var(--ink);
+    background-image: radial-gradient(rgba(184, 120, 32, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
     color: var(--bg);
     margin-top: 6rem;
     padding: 4rem var(--gutter) 3rem;
@@ -570,8 +648,8 @@
     color: rgba(250, 246, 236, 0.75);
   }
   footer .contact a {
-    color: var(--accent-2);
-    border-bottom: 1px solid rgba(198, 107, 61, 0.4);
+    color: var(--amber-2);
+    border-bottom: 1px dashed rgba(212, 152, 48, 0.4);
     padding-bottom: 1px;
   }
   footer .contact a:hover { color: var(--bg-card); border-color: var(--bg-card); }
@@ -591,7 +669,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent-2);
+    color: var(--amber-2);
     display: block;
     margin-bottom: 0.6rem;
   }
@@ -600,7 +678,7 @@
     grid-column: 1 / -1;
     margin-top: 2.5rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(212, 196, 173, 0.15);
+    border-top: 1px dashed rgba(212, 196, 173, 0.15);
     font-family: var(--mono);
     font-size: 0.7rem;
     letter-spacing: 0.06em;
@@ -649,6 +727,9 @@
     <div class="tagline">Podcast Host &middot; Educator &middot; Trailhead Originator</div>
   </div>
   <aside class="hero-aside reveal">
+    <div class="avatar-frame">
+      <img src="images/avatar.jpg" alt="Joshua Birk" />
+    </div>
     <p>
       Thirty years of building things people learn from &mdash; software, lessons,
       conversations, talks. <span class="lede">Looking for the next thing.</span>
