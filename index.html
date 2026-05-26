@@ -852,7 +852,6 @@
     <a href="#experience">Experience</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
-    <a href="#" id="nav-vk" onclick="vkShow();return false;">[ V-K Test ]</a>
   </nav>
 </div>
 
@@ -1264,7 +1263,9 @@
       Bloomington-Normal, IL &middot; 5 years<br />
       Volunteered for a crisis line, handling active situations including suicide intervention.<br /><br />
       <strong>Boy Scouts of America</strong><br />
-      Life Scout
+      Life Scout<br /><br />
+      <strong><a href="#" onclick="vkShow();return false;" style="color:var(--cyan);text-shadow:var(--glow-cyan);border-bottom:1px solid rgba(0,229,255,0.3);">Voight-Kampff Certificate Instructor</a></strong><br />
+      Nexus Detection Unit
     </div>
 
     <div class="colophon">
@@ -1408,15 +1409,7 @@ function showVKResult() {
   r.style.display = 'block';
 }
 
-/* ---- Key handler ---- */
 document.addEventListener('keydown', e => {
-  // V = Voight-Kampff
-  if (e.key === 'v' || e.key === 'V') {
-    if (!document.getElementById('vk-overlay').classList.contains('active')) {
-      vkShow();
-    }
-  }
-  // ESC = close overlay
   if (e.key === 'Escape') {
     document.getElementById('vk-overlay').classList.remove('active');
   }
