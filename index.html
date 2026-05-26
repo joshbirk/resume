@@ -468,101 +468,52 @@
   }
 
   /* -----------------------------------------------
-     Appearances
+     Appearances — event badges
      ----------------------------------------------- */
-  .appearances-grid {
+  .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
   }
 
-  .appear-card {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  .event-badge {
     background: var(--bg-card);
-    border: 1px solid var(--hair);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
-  }
-  .appear-card::before {
-    content: "";
-    position: absolute;
-    top: -1px; left: -1px;
-    width: 14px; height: 14px;
-    border-top: 2px solid var(--amber);
-    border-left: 2px solid var(--amber);
-    pointer-events: none;
-    z-index: 2;
-    box-shadow: var(--glow-amber);
-  }
-  .appear-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 40px -28px rgba(184, 120, 32, 0.45),
-                0 0 0 1px rgba(184, 120, 32, 0.25);
-  }
-
-  .appear-media {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #0e0a06;
-    position: relative;
-  }
-  .appear-media img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: sepia(0.25) contrast(1.08);
-    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s;
-  }
-  .appear-card:hover .appear-media img {
-    transform: scale(1.04);
-    filter: sepia(0.1) contrast(1.12);
-  }
-  .appear-media::after {
-    content: "";
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(26, 20, 10, 0.04) 2px,
-      rgba(26, 20, 10, 0.04) 3px
-    );
-    pointer-events: none;
-  }
-  .appear-media .yr {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: rgba(0,0,0,0.6);
-    color: var(--amber-2);
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-    letter-spacing: 0.08em;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(184, 120, 32, 0.4);
-    text-shadow: var(--glow-amber);
-  }
-
-  .appear-card figcaption {
-    padding: 1.2rem 1.4rem 1.4rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: var(--ink-soft);
+    border: 1px solid rgba(0,229,255,0.15);
+    padding: 1.4rem 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.3s;
   }
-  .appear-label {
+  .event-badge::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 10px; height: 10px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+    box-shadow: var(--glow-cyan);
+  }
+  .event-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -20px rgba(0,229,255,0.3),
+                0 0 0 1px rgba(0,229,255,0.2);
+  }
+  .event-name {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--cyan);
+    text-shadow: var(--glow-cyan);
+    letter-spacing: 0.04em;
+  }
+  .event-org {
     font-family: var(--mono);
     font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--amber);
-    text-shadow: var(--glow-amber);
+    color: var(--muted);
   }
 
   /* -----------------------------------------------
@@ -987,30 +938,45 @@
      ============================================ -->
 <section class="block" id="appearances">
   <div class="section-label">Appearances</div>
-  <h2 class="section-heading">Find me <em>online</em>.</h2>
+  <h2 class="section-heading">Events I&rsquo;ve <em>spoken at</em>.</h2>
 
-  <div class="appearances-grid">
-
-    <figure class="appear-card">
-      <div class="appear-media">
-        <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:gnf5enhvp3mow4hgwd55diud/bafkreifucjdhzwlblxdb3t3s7bmzo4ddrbhvtwtaghkzqmnoltqmqetfvi" alt="Joshua Birk" />
-      </div>
-      <figcaption>
-        <span class="appear-label">bsky.app &mdash; @joshbirk</span>
-        Technology advocate. Occasional podcaster. Emotional support human.
-      </figcaption>
-    </figure>
-
-    <figure class="appear-card">
-      <div class="appear-media">
-        <img src="https://avatars.githubusercontent.com/u/495409?v=4" alt="Joshua Birk" />
-      </div>
-      <figcaption>
-        <span class="appear-label">github.com/joshbirk</span>
-        76 public repos. Trailhead code samples, LWC recipes, IoT demos, and more.
-      </figcaption>
-    </figure>
-
+  <div class="event-grid">
+    <div class="event-badge">
+      <span class="event-name">Dreamforce</span>
+      <span class="event-org">Salesforce</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">TDX</span>
+      <span class="event-org">Salesforce TrailblazerDX</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Agentforce World Tours</span>
+      <span class="event-org">Salesforce</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Forcelandia</span>
+      <span class="event-org">Community &middot; Portland, OR</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Mile High Dreamin&rsquo;</span>
+      <span class="event-org">Community &middot; Denver, CO</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Midwest Dreamin&rsquo;</span>
+      <span class="event-org">Community &middot; Chicago, IL</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Cactusforce</span>
+      <span class="event-org">Community &middot; Phoenix, AZ</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">Snowforce</span>
+      <span class="event-org">Community &middot; Salt Lake City, UT</span>
+    </div>
+    <div class="event-badge">
+      <span class="event-name">True North Dreamin&rsquo;</span>
+      <span class="event-org">Community &middot; Canada</span>
+    </div>
   </div>
 </section>
 
