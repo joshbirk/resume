@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Birk — Resume</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5in 0.7in 0.5in 0.7in;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 9.5pt;
+    line-height: 1.32;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .header {
+    border-bottom: 2px solid #1a3a5c;
+    padding-bottom: 7px;
+    margin-bottom: 9px;
+  }
+
+  .header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #1a3a5c;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+  }
+
+  .header .title-line {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 9.5pt;
+    color: #444;
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+  }
+
+  .header .contact-line {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 8.5pt;
+    color: #555;
+    letter-spacing: 0.01em;
+  }
+
+  .header .contact-line span {
+    margin: 0 5px;
+    color: #aaa;
+  }
+
+  /* ── Section headings ── */
+  h2 {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #1a3a5c;
+    border-bottom: 1px solid #c8d8e8;
+    padding-bottom: 2px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+  /* ── Summary ── */
+  .summary p {
+    font-size: 9.3pt;
+    line-height: 1.4;
+    color: #2a2a2a;
+  }
+
+  /* ── Highlights ── */
+  .highlights ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .highlights ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+    font-size: 9.4pt;
+    line-height: 1.4;
+  }
+
+  .highlights ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #1a3a5c;
+    font-weight: bold;
+  }
+
+  /* ── Experience ── */
+  .employer-block {
+    margin-bottom: 5px;
+  }
+
+  .employer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+
+  .employer-name {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+
+  .employer-meta {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 8pt;
+    color: #666;
+    font-style: italic;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+
+  .role-block {
+    margin-bottom: 5px;
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .role-title {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 9.4pt;
+    font-weight: bold;
+    color: #1a3a5c;
+  }
+
+  .role-dates {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 8pt;
+    color: #666;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+
+  .role-body {
+    font-size: 9.1pt;
+    line-height: 1.38;
+    color: #2a2a2a;
+  }
+
+  .role-body p {
+    margin-bottom: 2px;
+  }
+
+  /* ── Speaking ── */
+  .speaking p {
+    font-size: 9.1pt;
+    line-height: 1.38;
+    margin-bottom: 2px;
+  }
+
+  .speaking p strong {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #444;
+  }
+
+  /* ── Skills ── */
+  .skills-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .skills-table tr td {
+    vertical-align: top;
+    padding: 1px 0;
+    font-size: 9.1pt;
+    line-height: 1.38;
+  }
+
+  .skills-table tr td:first-child {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-weight: bold;
+    color: #333;
+    width: 34%;
+    padding-right: 8px;
+    white-space: nowrap;
+  }
+
+  /* ── Education / Service ── */
+  .simple-entry {
+    font-size: 9.3pt;
+    line-height: 1.5;
+  }
+
+  .simple-entry .entry-title {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-weight: bold;
+  }
+
+  /* ── Advocacy note ── */
+  .advocacy-block {
+    background: #f5f8fc;
+    border-left: 3px solid #1a3a5c;
+    padding: 5px 8px;
+    margin-bottom: 6px;
+    page-break-inside: avoid;
+  }
+
+  .advocacy-block .role-title {
+    font-size: 9.4pt;
+  }
+
+  .advocacy-block .role-body {
+    font-size: 9.2pt;
+  }
+
+  /* ── Placeholder styling ── */
+  .placeholder {
+    color: #c0392b;
+    font-style: italic;
+  }
+
+  /* ── Print utilities ── */
+  .no-break {
+    page-break-inside: avoid;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="header">
+  <h1>Joshua Birk</h1>
+  <div class="title-line">Technology Advocate &nbsp;·&nbsp; Developer Relations &nbsp;·&nbsp; AI Advocacy</div>
+  <div class="contact-line">
+    Chicago, Illinois
+    <span>|</span>
+    847-687-9839
+    <span>|</span>
+    joshua.birk@gmail.com
+    <span>|</span>
+    linkedin.com/in/joshuabirk
+    <span>|</span>
+    admin.salesforce.com/blog/author/jb
+  </div>
+</div>
+
+
+<!-- ═══════════════ SUMMARY ═══════════════ -->
+<h2>Summary</h2>
+<div class="summary">
+  <p>New technology keeps showing up. I learn it, build something real with it, and spend the next few years explaining it to everyone else. CGI, REST, IoT, and now AI agents and MCP — same habit, different decade. At Salesforce that meant evangelizing the platform's shift to REST-first APIs, running the IoT Zone with hands-on workshops and demo stations, and now leading AI advocacy programs anchored in real builds and concrete practitioner takeaways.</p>
+</div>
+
+
+<!-- ═══════════════ SELECTED HIGHLIGHTS ═══════════════ -->
+<h2>Selected Highlights</h2>
+<div class="highlights">
+  <ul>
+    <li>New technology keeps showing up. The habit has been the same for thirty years: learn it, build something real with it, explain it to everyone else. <strong>CGI. REST. IoT. AI agents.</strong></li>
+    <li><strong>Built the Trailhead prototype</strong> (Medals, 2014) — a Canvas app with JSON/Markdown-authored challenges and automated lesson checks, originally built to solve a workshop problem. It became Project Trailhead sixty-six days later.</li>
+    <li><strong>Lead developer on Expense2GO</strong>, a native iPhone expense app with Salesforce integration. Launched July 10, 2008 — the day the App Store opened.</li>
+    <li><strong>Created, produced, and hosted the Salesforce Developer Podcast</strong> (2019–2023). Sourced and researched every guest personally. Hundreds of episodes.</li>
+    <li>Built a Java-to-JavaScript polling dashboard at State Farm in 1997 — effectively AJAX before AJAX had a name.</li>
+    <li><strong>Keynote speaker on AI.</strong> Recent: <em>Behind the AI: From Theory to Practice and In Between</em> (Mile High Dreamin' 2025).</li>
+  </ul>
+</div>
+
+
+<!-- ═══════════════ EXPERIENCE ═══════════════ -->
+<h2>Experience</h2>
+
+<!-- SALESFORCE -->
+<div class="employer-block">
+  <div class="employer-header">
+    <span class="employer-name">Salesforce</span>
+    <span class="employer-meta">2010 to Present &nbsp;·&nbsp; 16 years &nbsp;·&nbsp; Chicago, IL (Remote)</span>
+  </div>
+
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Admin Evangelist (and AI Advocate)</span>
+      <span class="role-dates">May 2023 to Present</span>
+    </div>
+    <div class="role-body">
+      <p>AI advocacy work for the Salesforce Admin community. Talks and workshops anchored in real philosophy (Bostrom, Foot, Laplace, Amber Case) and landed on concrete Agentforce takeaways: guardrails, edge-case prompting, Data Cloud connection, data hygiene, enhance-not-replace. Conference content at Dreamforce and TDX, hands-on workshops, written content at admin.salesforce.com. The through-line: show the build, show the testing, show the figuring-it-out-as-you-go parts.</p>
+    </div>
+  </div>
+
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Senior Director, Developer Evangelism</span>
+      <span class="role-dates">Nov 2017 to Apr 2023</span>
+    </div>
+    <div class="role-body">
+      <p>Developer Evangelism work as Trailhead scaled. Conference content, code projects, written content. This period expanded into podcast production — the Salesforce Developer Podcast launched in late 2019.</p>
+    </div>
+  </div>
+
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Producer and Host, Salesforce Developer Podcast</span>
+      <span class="role-dates">Nov 2019 to Oct 2023</span>
+    </div>
+    <div class="role-body">
+      <p>Built the show on one editorial rule: give the mic to people doing interesting things who didn't have one. Created the format, sourced and researched every guest personally, produced and hosted hundreds of episodes.</p>
+    </div>
+  </div>
+
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Principal Developer Evangelist</span>
+      <span class="role-dates">Nov 2014 to Nov 2017</span>
+    </div>
+    <div class="role-body">
+      <p>The years right after Trailhead launched. Conference content, code projects, written content, community-building as Trailhead grew from a prototype into something much larger.</p>
+    </div>
+  </div>
+
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Developer Evangelist</span>
+      <span class="role-dates">Nov 2010 to Nov 2014</span>
+    </div>
+    <div class="role-body">
+      <p>Conference talks, hackathons, code samples, written content, and ELEVATE Workshops across North America. This was also when Salesforce shifted to REST-first APIs — a big part of the evangelism work was helping developers understand what that meant and what they could build with it. Ran the IoT Zone in 2014 and 2015: demo stations and hands-on workshops for practitioners. Built Medals in 2014 to solve a workshop problem — it became Project Trailhead sixty-six days later.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODEL METRICS -->
+<div class="employer-block">
+  <div class="employer-header">
+    <span class="employer-name">Model Metrics</span>
+    <span class="employer-meta">Aug 2007 to Nov 2010 &nbsp;·&nbsp; Chicago, IL</span>
+  </div>
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Senior Developer</span>
+      <span class="role-dates">Aug 2007 to Nov 2010</span>
+    </div>
+    <div class="role-body">
+      <p>Client development work for General Motors and NBC Universal — custom interfaces, Salesforce integrations, platform architecture. Lead developer on Expense2GO, a native iPhone expense app with Salesforce integration, offline sync, and receipt capture. Launched July 10, 2008 — the day the App Store opened.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CRATE & BARREL -->
+<div class="employer-block">
+  <div class="employer-header">
+    <span class="employer-name">Crate &amp; Barrel</span>
+    <span class="employer-meta">Dec 2002 to Aug 2007 &nbsp;·&nbsp; Northbrook, IL</span>
+  </div>
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Senior Developer</span>
+      <span class="role-dates">Dec 2002 to Aug 2007</span>
+    </div>
+    <div class="role-body">
+      <p>Shipped the online furniture department on deadline — at the time, nobody was sure big-ticket items would sell on the web. Built a client-side event structure for custom dropdowns and modal windows in the pre-jQuery era.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ORGANIC -->
+<div class="employer-block">
+  <div class="employer-header">
+    <span class="employer-name">Organic</span>
+    <span class="employer-meta">1999 to 2001 &nbsp;·&nbsp; Chicago, IL</span>
+  </div>
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Senior Interface Engineer</span>
+      <span class="role-dates">1999 to 2001</span>
+    </div>
+    <div class="role-body">
+      <p>Built and maintained Glimmer, a dHTML library powering custom animations, drag-and-drop, and UI extensions across multiple client engagements — substantial cross-browser engineering in 1999–2000.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STATE FARM -->
+<div class="employer-block">
+  <div class="employer-header">
+    <span class="employer-name">State Farm</span>
+    <span class="employer-meta">1997 to 1999 &nbsp;·&nbsp; Bloomington, IL</span>
+  </div>
+  <div class="role-block">
+    <div class="role-header">
+      <span class="role-title">Data Specialist II / III</span>
+      <span class="role-dates">1997 to 1999</span>
+    </div>
+    <div class="role-body">
+      <p>Built State Farm's first Intranet (PERL/CGI) and a working Java-to-JavaScript polling dashboard — effectively AJAX before AJAX had a name. (Detailed in Selected Highlights above.)</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ SPEAKING & ADVOCACY ═══════════════ -->
+<h2>Speaking, Advocacy &amp; Content</h2>
+<div class="speaking">
+  <p><strong>Recent talks:</strong> <em>Behind the AI: From Theory to Practice and In Between</em> (Mile High Dreamin' 2025 keynote); <em>The Origins of Trailhead</em> (True North Dreamin' 2025); multiple breakout sessions at Dreamforce and TrailheaDX/TDX (2010 to present).</p>
+  <p><strong>Written:</strong> Long-form content for the Salesforce Admin community at admin.salesforce.com/blog/author/jb.</p>
+  <p><strong>Mental health:</strong> Speak openly about mental health in the tech industry, with a focus on what an anxiety breakdown teaches about how anxiety physically works in the body and brain. Anchor talk <em>The Pool At Nowhere</em> given as the closing keynote at Forcelandia (2023) and posted publicly. Mental health advocacy and neurodivergent awareness remain core to how I show up at work. (Nov 2022 to present.)</p>
+</div>
+
+
+<!-- ═══════════════ SKILLS ═══════════════ -->
+<h2>Skills &amp; Technologies</h2>
+<table class="skills-table">
+  <tr>
+    <td>Developer Relations Leadership</td>
+    <td>Team leadership, content strategy, conference planning, multimedia production, executive translation, AI adoption strategy</td>
+  </tr>
+  <tr>
+    <td>Salesforce platform</td>
+    <td>Apex, Lightning Web Components, Flow, Metadata API, SOQL, SLDS, Salesforce CLI, Force.com</td>
+  </tr>
+  <tr>
+    <td>Languages</td>
+    <td>JavaScript / TypeScript, Rust, Python, Java, C#, PHP, Objective-C, PERL, HTML5 / CSS</td>
+  </tr>
+  <tr>
+    <td>AI &amp; tooling</td>
+    <td>AI adoption strategy, Agentforce, prompt engineering, LLM integration, RAG, AI-native authoring</td>
+  </tr>
+  <tr>
+    <td>Advocacy &amp; media</td>
+    <td>Public speaking, podcast production, developer relations, technical writing, workshop design</td>
+  </tr>
+</table>
+
+
+<!-- ═══════════════ EDUCATION ═══════════════ -->
+<div style="page-break-inside: avoid;">
+<h2>Education</h2>
+<div class="simple-entry">
+  <span class="entry-title">Illinois Wesleyan University</span> &nbsp;—&nbsp; Bachelor of Arts, Psychology and English (1992–1996)
+</div>
+
+
+<!-- ═══════════════ SERVICE & VOLUNTEER ═══════════════ -->
+<h2>Service &amp; Volunteer</h2>
+<div class="simple-entry">
+  <strong>Crisis Line Operator</strong>, PATH (Bloomington-Normal, IL) &nbsp;·&nbsp; 5 years &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Life Scout</strong>, Boy Scouts of America
+</div>
+</div>
+
+</body>
+</html>
