@@ -146,8 +146,8 @@ const ROW_B_Y = 252;
 const MILESTONES = [
   {
     year: 1998, row: 'A', color: C.muted, filt: 'fsoft',
-    title: 'First Intranet',
-    sub: 'State Farm intranet in Perl',
+    title: 'CGI & Perl',
+    sub: 'State Farm intranet',
   },
   {
     year: 2000, row: 'B', color: C.muted, filt: 'fsoft',
