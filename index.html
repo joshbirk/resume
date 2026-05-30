@@ -458,6 +458,61 @@
     grid-column: 1 / -1;
     flex-direction: row;
   }
+
+  /* ── Tech educator card ── */
+  .tech-educator .card-body { width: 100%; }
+  .tech-lede {
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+    max-width: 56ch;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.25rem;
+  }
+  @media (max-width: 820px) {
+    .tech-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .tech-grid { grid-template-columns: 1fr; }
+  }
+  .tech-tile {
+    background: var(--bg-deep);
+    border: 1px solid rgba(0,229,255,0.12);
+    padding: 1.25rem 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .tech-tile--current {
+    border-color: rgba(255,85,0,0.4);
+    box-shadow: inset 0 0 18px rgba(255,85,0,0.06);
+  }
+  .tech-label {
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+  }
+  .tech-tile--current .tech-label {
+    color: var(--accent-2);
+    text-shadow: var(--glow-accent);
+  }
+  .tech-years {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .tech-tile p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0;
+  }
   .card.feature .card-media { flex: 1.1; aspect-ratio: auto; }
   .card.feature .card-body { flex: 1; padding: 2.5rem; justify-content: center; }
   .card.feature h3 { font-size: 2.1rem; }
@@ -874,19 +929,33 @@
   <div class="work-grid">
 
     <!-- Technology Educator -->
-    <article class="card feature">
+    <article class="card feature tech-educator">
       <div class="card-body">
         <div class="role">Educator &middot; Presenter &middot; Advocate</div>
         <h3>Learning and Teaching Technology</h3>
-        <p>
-          New technology keeps showing up. The habit has been the same for thirty years: learn it, build something real with it, then explain it to everyone else.
-        </p>
-        <p>
-          <strong>CGI</strong> &mdash; Built State Farm's first intranet and a polling dashboard before AJAX had a name (1997).
-          <strong>REST</strong> &mdash; Helped developers understand what Salesforce's shift to REST-first APIs meant and what they could build with it (2010&ndash;2014).
-          <strong>IoT</strong> &mdash; Ran the Salesforce IoT Zone: demo stations and hands-on workshops for two years (2014&ndash;2015).
-          <strong>AI &amp; MCP</strong> &mdash; Keynotes and workshops on AI agents anchored in real builds, not slides about what AI might do someday (2022&ndash;present).
-        </p>
+        <p class="tech-lede">New technology keeps showing up. The habit has been the same for thirty years: learn it, build something real with it, then explain it to everyone else.</p>
+        <div class="tech-grid">
+          <div class="tech-tile">
+            <div class="tech-label">CGI</div>
+            <div class="tech-years">1997</div>
+            <p>Built State Farm's first intranet and a polling dashboard before AJAX had a name.</p>
+          </div>
+          <div class="tech-tile">
+            <div class="tech-label">REST</div>
+            <div class="tech-years">2010&ndash;2014</div>
+            <p>Helped developers understand what Salesforce's shift to REST-first APIs meant and what they could build with it.</p>
+          </div>
+          <div class="tech-tile">
+            <div class="tech-label">IoT</div>
+            <div class="tech-years">2014&ndash;2015</div>
+            <p>Ran the Salesforce IoT Zone: demo stations and hands-on workshops for two years.</p>
+          </div>
+          <div class="tech-tile tech-tile--current">
+            <div class="tech-label">AI &amp; MCP</div>
+            <div class="tech-years">2022&ndash;present</div>
+            <p>Keynotes and workshops on AI agents anchored in real builds, not slides about what AI might do someday.</p>
+          </div>
+        </div>
       </div>
     </article>
 

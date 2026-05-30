@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Joshua Birk</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 8.5in;
+    height: 11in;
+    background: linear-gradient(160deg, #0a1628 0%, #05080f 55%, #000000 100%);
+    color: #e8f4ff;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    overflow: hidden;
+  }
+
+  /* ── QR with centered image overlay ── */
+  .qr-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-wrap img.qr {
+    display: block;
+  }
+
+  .qr-wrap .center-img {
+    position: absolute;
+    width: 28%;
+    height: 28%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #05080f;
+    box-shadow: 0 0 0 2px rgba(77,184,255,0.3), 0 0 20px rgba(77,184,255,0.2);
+  }
+
+  /* ── Name ── */
+  .name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #e8f4ff;
+    text-align: center;
+  }
+
+  .name span {
+    color: #4db8ff;
+    text-shadow: 0 0 6px #4db8ff, 0 0 20px rgba(77,184,255,0.5);
+  }
+
+  /* ── URL ── */
+  .url {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    color: rgba(77,184,255,0.35);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <div class="qr-wrap">
+    <img class="qr" id="qr" />
+    <img class="center-img" src="images/meanime.png" alt="" />
+  </div>
+
+  <div class="name">Joshua <span>Birk</span></div>
+  <div class="url">joshbirk.github.io/resume</div>
+
+</body>
+</html>

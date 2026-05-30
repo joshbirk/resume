@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Joshua Birk — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: letter; margin: 0; }
+
+  :root {
+    --bg:       #07050a;
+    --bg-card:  #0e0a14;
+    --bg-deep:  #040307;
+    --ink:      #f0deb8;
+    --ink-soft: #c8a870;
+    --muted:    #5a4a38;
+    --accent:   #ff5500;
+    --accent-2: #ff7733;
+    --amber:    #ffaa00;
+    --cyan:     #00e5ff;
+    --mono:     'Roboto Mono', monospace;
+    --sans:     'Roboto', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 8.5in;
+    height: 11in;
+    background: var(--bg);
+    background-image:
+      linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--ink);
+    font-family: var(--sans);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 0.42in 0.55in 0.28in;
+    border-bottom: 1px solid rgba(0,229,255,0.12);
+  }
+
+  .avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,229,255,0.35);
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(0,229,255,0.2);
+  }
+
+  .header-text { flex: 1; }
+
+  .header-text h1 {
+    font-family: var(--mono);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .header-text h1 span { color: var(--cyan); text-shadow: 0 0 10px rgba(0,229,255,0.7); }
+
+  .header-text .title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .header-contact {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    text-align: right;
+  }
+
+  /* ── Body grid ── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 0.42fr;
+    gap: 0;
+    padding: 0.28in 0.55in;
+    overflow: hidden;
+  }
+
+  .col-main { padding-right: 0.3in; border-right: 1px solid rgba(0,229,255,0.08); }
+  .col-side  { padding-left: 0.28in; }
+
+  /* ── Section label ── */
+  .sec {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+    margin-top: 0.32in;
+  }
+
+  .sec:first-child { margin-top: 0; }
+
+  /* ── About ── */
+  .about-text {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .about-text em { color: var(--cyan); font-style: normal; font-weight: 500; }
+
+  /* ── Tech wave timeline ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 0.8rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0,229,255,0.15), rgba(255,85,0,0.4));
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 0.4rem;
+    padding: 0.22rem 0;
+    position: relative;
+    align-items: baseline;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+
+  .tl-item:last-child::before { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+
+  .tl-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--cyan);
+  }
+
+  .tl-item:last-child .tl-label {
+    color: var(--accent-2);
+    text-shadow: 0 0 8px rgba(255,85,0,0.5);
+  }
+
+  .tl-desc {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .tl-desc strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Selected work ── */
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+  }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 0.55rem 1fr;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .work-item::before {
+    content: '▸';
+    color: var(--amber);
+    font-size: 0.6rem;
+  }
+
+  .work-item p { font-size: 0.74rem; color: var(--ink-soft); line-height: 1.4; }
+  .work-item strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Skills side ── */
+  .skill-group { margin-bottom: 0.22in; }
+
+  .skill-group h4 {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border: 1px solid rgba(255,170,0,0.18);
+    padding: 0.12rem 0.38rem;
+    line-height: 1.4;
+  }
+
+  /* ── Career bar ── */
+  .career-bar {
+    margin-top: 0.22in;
+  }
+
+  .bar-track {
+    position: relative;
+    height: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,229,255,0.1);
+    margin-bottom: 0.3rem;
+  }
+
+  .bar-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0,229,255,0.3), var(--cyan));
+  }
+
+  .bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.52rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 0.14in 0.55in 0.18in;
+    border-top: 1px solid rgba(0,229,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-events {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .ev {
+    font-family: var(--mono);
+    font-size: 0.52rem;
+    color: var(--muted);
+    border: 1px solid rgba(0,229,255,0.1);
+    padding: 0.08rem 0.32rem;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="avatar" src="images/avatar.jpg" alt="Joshua Birk" />
+  <div class="header-text">
+    <h1>Joshua <span>Birk</span></h1>
+    <div class="title">Technology Advocate &nbsp;·&nbsp; Developer Relations &nbsp;·&nbsp; AI Advocacy</div>
+  </div>
+  <div class="header-contact">
+    joshua.birk@gmail.com<br />
+    847-687-9839<br />
+    linkedin.com/in/joshuabirk<br />
+    Chicago, IL
+  </div>
+</header>
+
+<div class="body">
+
+  <div class="col-main">
+
+    <div class="sec">About</div>
+    <p class="about-text">New technology keeps showing up. The habit has been the same for thirty years: <em>learn it</em>, build something real with it, then <em>explain it to everyone else</em>. CGI, REST, IoT, AI agents and MCP — same habit, different decade.</p>
+
+    <div class="sec">The Pattern</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-label">CGI</span>
+        <span class="tl-desc"><strong>1997</strong> — State Farm's first intranet and a polling dashboard before AJAX had a name.</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-label">REST</span>
+        <span class="tl-desc"><strong>2010–14</strong> — Helped developers understand Salesforce's shift to REST-first APIs and what to build with it.</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-label">IoT</span>
+        <span class="tl-desc"><strong>2014–15</strong> — Ran the Salesforce IoT Zone: demo stations and hands-on workshops for two years.</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-label">AI+MCP</span>
+        <span class="tl-desc"><strong>2022–now</strong> — Keynotes and workshops on AI agents anchored in real builds, not slides about what AI might do someday.</span>
+      </div>
+    </div>
+
+    <div class="sec">Selected Work</div>
+    <div class="work-list">
+      <div class="work-item"><p><strong>Trailhead prototype</strong> — Built Medals in 2014 to solve a workshop problem. It became Project Trailhead sixty-six days later.</p></div>
+      <div class="work-item"><p><strong>App Store Day 1</strong> — Lead developer on Expense2GO, launched July 10, 2008 — the day the App Store opened.</p></div>
+      <div class="work-item"><p><strong>Salesforce Developer Podcast</strong> — Created, produced, and hosted 2019–2023. Sourced every guest personally. Hundreds of episodes.</p></div>
+      <div class="work-item"><p><strong>Keynote speaker</strong> — <em>Behind the AI: From Theory to Practice and In Between</em> (Mile High Dreamin' 2025).</p></div>
+    </div>
+
+  </div>
+
+  <div class="col-side">
+
+    <div class="sec">Toolkit</div>
+
+    <div class="skill-group">
+      <h4>DevRel &amp; Advocacy</h4>
+      <div class="pills">
+        <span class="pill">Public Speaking</span>
+        <span class="pill">Workshop Design</span>
+        <span class="pill">Podcast Production</span>
+        <span class="pill">Technical Writing</span>
+        <span class="pill">Conference Content</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>AI &amp; Platform</h4>
+      <div class="pills">
+        <span class="pill">Agentforce</span>
+        <span class="pill">MCP</span>
+        <span class="pill">Prompt Engineering</span>
+        <span class="pill">LLM Integration</span>
+        <span class="pill">RAG</span>
+        <span class="pill">Apex</span>
+        <span class="pill">LWC</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <div class="pills">
+        <span class="pill">JS / TS</span>
+        <span class="pill">Python</span>
+        <span class="pill">Rust</span>
+        <span class="pill">Java</span>
+        <span class="pill">Perl</span>
+        <span class="pill">HTML/CSS</span>
+      </div>
+    </div>
+
+    <div class="sec">Career</div>
+    <div class="career-bar">
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <div class="bar-labels"><span>1997</span><span>2010</span><span>now</span></div>
+    </div>
+
+    <div class="sec">Education</div>
+    <p style="font-size:0.7rem;color:var(--ink-soft);line-height:1.5;">Illinois Wesleyan University<br/>B.A. Psychology &amp; English<br/>1992–1996</p>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-events">
+    <span class="ev">Dreamforce</span>
+    <span class="ev">TDX</span>
+    <span class="ev">Agentforce World Tours</span>
+    <span class="ev">Mile High Dreamin'</span>
+    <span class="ev">Forcelandia</span>
+    <span class="ev">True North Dreamin'</span>
+    <span class="ev">DevOps Dreamin' London</span>
+    <span class="ev">Dreamin' In Data</span>
+  </div>
+  <div class="footer-right">
+    Salesforce · 16 years<br/>
+    30 years in software
+  </div>
+</footer>
+
+</body>
+</html>
