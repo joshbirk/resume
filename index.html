@@ -839,6 +839,65 @@
   }
 
   /* -----------------------------------------------
+     Content creation grid
+     ----------------------------------------------- */
+  .content-anchor {
+    margin-bottom: 3rem;
+  }
+  .content-disciplines {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .discipline {
+    background: var(--bg-card);
+    border: 1px solid rgba(0,229,255,0.15);
+    padding: 1.6rem 1.6rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.3s;
+  }
+  .discipline::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 10px; height: 10px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+    box-shadow: var(--glow-cyan);
+  }
+  .discipline:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -20px rgba(0,229,255,0.3),
+                0 0 0 1px rgba(0,229,255,0.2);
+  }
+  .discipline-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-shadow: var(--glow-cyan);
+  }
+  .discipline h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .discipline p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* -----------------------------------------------
      Reveal-on-load (subtle)
      ----------------------------------------------- */
   .reveal { opacity: 0; transform: translateY(14px); animation: reveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
@@ -858,6 +917,7 @@
   <div class="mark">JB &mdash; 2026</div>
   <nav class="nav">
     <a href="#work">Work</a>
+    <a href="#content">Content</a>
     <a href="#appearances">Appearances</a>
     <a href="#experience">Experience</a>
     <a href="#testimonials">Testimonials</a>
@@ -977,7 +1037,45 @@
       </div>
     </article>
 
-    <!-- Feature: Podcast -->
+  </div>
+</section>
+
+<!-- ============================================
+     Digital Content Creation
+     ============================================ -->
+<section class="block" id="content">
+  <div class="section-label">Content Creation &amp; Editing</div>
+  <h2 class="section-heading">Making things people <em>actually watch, read, and hear</em>.</h2>
+
+  <div class="content-disciplines">
+
+    <div class="discipline">
+      <div class="discipline-label">Video &amp; Audio</div>
+      <h4>Recording &amp; Editing</h4>
+      <p>Especially during the pandemic, learned how to produce and edit video and audio formats to make them work for a technical and professional audience.</p>
+    </div>
+
+    <div class="discipline">
+      <div class="discipline-label">Writing</div>
+      <h4>Creating &amp; Editing</h4>
+      <p>Writing technical content for a wide variety of audiences for decades. Have been in a strategic role for content calendars and in an editorial role to make sure work is being done to a professional standard for the right audience.</p>
+    </div>
+
+    <div class="discipline">
+      <div class="discipline-label">Presentation Design</div>
+      <h4>Slide Craft &amp; Coaching</h4>
+      <p>Decades of developer slides for workshops, user groups, and community keynotes. Developed a style of "the speaker is the presentation." Coached newcomers into slidecraft for TDX and Dreamforce.</p>
+    </div>
+
+    <div class="discipline">
+      <div class="discipline-label">Coaching</div>
+      <h4>Speaker Development</h4>
+      <p>When I ran the developer conference track, part of the job was getting new speakers ready. That meant working on structure, pacing, and the difference between knowing your material and being able to deliver it to a room.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 3rem;">
     <article class="card feature">
       <div class="card-media">
         <img src="images/pipcast.png" alt="Salesforce Developer Podcast cover art" />
@@ -995,6 +1093,15 @@
         </p>
       </div>
     </article>
+  </div>
+
+</section>
+
+<!-- ============================================
+     Trailhead + Mental Health
+     ============================================ -->
+<section class="block">
+  <div class="work-grid">
 
     <!-- Trailhead -->
     <article class="card">
